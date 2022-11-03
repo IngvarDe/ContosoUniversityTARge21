@@ -7,7 +7,7 @@ namespace ContosoUniversity.Models
 {
     public class Instructor
     {
-        [Key]
+        //[Key]
         public int Id { get; set; }
 
         [Required]
@@ -17,7 +17,7 @@ namespace ContosoUniversity.Models
 
         [Required]
         [StringLength(50)]
-        [Column("FirstMidName")]
+        //[Column("FirstMidName")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
@@ -30,6 +30,9 @@ namespace ContosoUniversity.Models
             }
         }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Hire Date")]
         public DateTime HireDate { get; set; }
 
         public ICollection<CourseAssignment> CourseAssignments { get; set; }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContosoUniversity.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    [Migration("20221020121654_ComplexdataModel")]
-    partial class ComplexdataModel
+    [Migration("20221103073305_RowVersion")]
+    partial class RowVersion
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -75,6 +75,11 @@ namespace ContosoUniversity.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
@@ -119,7 +124,6 @@ namespace ContosoUniversity.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnName("FirstMidName")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
