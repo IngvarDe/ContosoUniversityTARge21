@@ -42,7 +42,7 @@ namespace ContosoUniversity.Controllers
             var courses = await _context.Courses
                 .Include(_c => _c.Department)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.CourseId == id);
+                .FirstOrDefaultAsync(m => m.CourseID == id);
 
             if (courses == null)
             {
@@ -84,7 +84,7 @@ namespace ContosoUniversity.Controllers
 
             var course = await _context.Courses
                 .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.CourseId == id);
+                .FirstOrDefaultAsync(m => m.CourseID == id);
 
             if (course == null)
             {
@@ -105,7 +105,7 @@ namespace ContosoUniversity.Controllers
             }
 
             var courseToUpdate = await _context.Courses
-                .FirstOrDefaultAsync(c => c.CourseId == id);
+                .FirstOrDefaultAsync(c => c.CourseID == id);
 
             if (await TryUpdateModelAsync<Course>(courseToUpdate,
                 "",
@@ -138,7 +138,7 @@ namespace ContosoUniversity.Controllers
             var course = await _context.Courses
                 .Include(c => c.Department)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.CourseId == id);
+                .FirstOrDefaultAsync(m => m.CourseID == id);
 
             if (course == null)
             {
@@ -163,7 +163,7 @@ namespace ContosoUniversity.Controllers
             var depQuery = from d in _context.Departments
                            orderby d.Name
                            select d;
-            ViewBag.Id = new SelectList(depQuery.AsNoTracking(), "Id", "Name", selectedDepartment);
+            ViewBag.Id = new SelectList(depQuery.AsNoTracking(), "DepartmentID", "Name", selectedDepartment);
         }
     }
 }

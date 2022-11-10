@@ -51,7 +51,7 @@ namespace ContosoUniversity.Controllers
             {
                 ViewData["CourseId"] = courseId.Value;
                 vm.Enrollments = vm.Courses
-                    .Where(x => x.CourseId == courseId)
+                    .Where(x => x.CourseID == courseId)
                     .Single()
                     .Enrollments;
             }
