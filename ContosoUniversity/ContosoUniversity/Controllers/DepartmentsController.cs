@@ -207,12 +207,14 @@ namespace ContosoUniversity.Controllers
             return View(dep);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             ViewData["InstructorId"] = new SelectList(_context.Instructors, "Id", "FullName");
             return View();
         }
 
+        [HttpPost]
         public async Task<IActionResult> Create(Department dep)
         {
             if (ModelState.IsValid)
