@@ -17,16 +17,15 @@ namespace ContosoUniversity.Models
 
         [Required]
         [StringLength(50)]
-        //[Column("FirstMidName")]
         [Display(Name = "First Name")]
-        public string FirstMidName { get; set; }
+        public string FirstName { get; set; }
 
         [Display(Name = "Full Name")]
         public string FullName
         {
             get
             {
-                return LastName + ", " + FirstMidName;
+                return LastName + ", " + FirstName;
             }
         }
 
