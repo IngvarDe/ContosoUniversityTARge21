@@ -3,6 +3,7 @@ using ContosoUniversity.Models;
 using ContosoUniversity.Models.SchoolViewsModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -76,5 +77,16 @@ namespace ContosoUniversity.Controllers
 
             return View(instructor);
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            var instructor = new Instructor();
+            instructor.CourseAssignments = new List<CourseAssignment>();
+
+            return View();
+        }
+
+
     }
 }
