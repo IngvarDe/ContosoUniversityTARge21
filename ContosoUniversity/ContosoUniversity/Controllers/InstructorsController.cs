@@ -39,7 +39,7 @@ namespace ContosoUniversity.Controllers
 
             if(id != null)
             {
-                ViewData["InstructorId"] = id.Value;
+                ViewData["InstructorID"] = id.Value;
                 Instructor instructor = vm.Instructors
                     .Where(i => i.Id == id.Value)
                     .Single();
@@ -49,7 +49,7 @@ namespace ContosoUniversity.Controllers
 
             if (courseId != null)
             {
-                ViewData["CourseId"] = courseId.Value;
+                ViewData["CourseID"] = courseId.Value;
                 vm.Enrollments = vm.Courses
                     .Where(x => x.CourseID == courseId)
                     .Single()
@@ -57,6 +57,24 @@ namespace ContosoUniversity.Controllers
             }
 
             return View(vm);
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var instructor = await _context.Instructors
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (instructor == null)
+            {
+                return NotFound();
+            }
+
+            return View(instructor);
         }
     }
 }
